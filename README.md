@@ -1,2 +1,2 @@
 # Gaia
-a web aplication two display a greenhouse for the user
+a web aplication to display a greenhouse for the user
