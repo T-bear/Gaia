@@ -1,6 +1,5 @@
 from flask import  Flask, render_template, jsonify, redirect
 from pymongo import MongoClient
-#from key import *
 from bson.json_util import dumps
 
 app = Flask(__name__)
@@ -14,8 +13,10 @@ def to_json(data):
 
 @app.route('/')
 def index():
-	
-	return "Hello world"
+    greenhouses = db.greenhouses.find()
+    greenhouses_list = list(greenhouses)
+    houses = dumps(greenhouses_list)
+    return render_template('index.html', houses = greenhouses_list)
 
 #Add thing to db as W3C standard
 @app.route('/add')

@@ -25,43 +25,13 @@
             height: 400px;
             border: 1px solid lightgray;
         }
-    	</style>
+    </style>
 
   </head>
   <body>
-
   <script src="{{ url_for('static',filename='js/visjs/vis.js') }}"></script>
 
-  	<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-    
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-
-        		Stad: <p id="city"></p>
-        		Plats: <p id="location"></p>
-        		Växthusets namn: <p id="name"></p>
-        	
-        		<a class="btn btn-primary" id="greenhouseLink" href="">Besök </a>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-          
-    </div>
-  </div>
-
-
-<div class="container">
+ <div class="container">
 	<div class="row">
 		<div class="col-lg">
   	<h1>Test</h1>
@@ -69,77 +39,38 @@
 </div>
 </div>
 </div>
-
 <script type="text/javascript">
 
-    // create an array with nodes
-    var nodes = new vis.DataSet();
 
-    var data = new vis.DataSet(data);
 
-// add items
-// note that the data items can contain different properties and data formats
-
-    // create an array with edges
-    //var edges = new vis.DataSet();
+var data = new vis.DataSet(data);
 
 {% for house in houses %}
-nodes.add({
-	id: '{{ loop.index }}', 
-    label: '{{ house['name'] }}',
-    shape: 'box'}
-    );
-
 data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']}
   
 ]);
 
-{% set node_loop = loop %}
 
-	
-console.log('{{loop}}')
- var edges = new vis.DataSet([
-        //{from: '{{ node_loop.index}}', to: '{{ node_loop.index }}'},  
-    ]);
-
-{% endfor %}
- 	
-
-    // create a network
-    var container = document.getElementById('mynetwork');
-
-    // provide the data in the vis format
+    
     var data = {
-        nodes: nodes,
-        edges: edges,
-        data: data  
+       data: data  
     };
     
     var options = {};
-    // initialize your network!
-    var network = new vis.Network(container, data, options);
-    network.on( 'click', function(properties) {
-    var ids = properties.nodes;
+
+
     
+    var ids = null
+    /*
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
-    var name = data.data._data[ids].text[2];   
+    var name = data.data._data[ids].text[2];    
+    */
+    
+    console.log(data)
 
-    var clickedNodes = nodes.get(ids);
-    if (ids != undefined ){
-    	$("#myModal").modal();
-    	var strLink = "https://tillsammansodling/" + city + "/" + location + "/" + name;
-    	var adr = strLink.toLowerCase();
-
-
-    	document.getElementById("greenhouseLink").setAttribute("href",adr);
-    	document.getElementById("city").textContent = city;
-    	document.getElementById("location").textContent = location;
-    	document.getElementById("name").textContent = name;  
-};
-
-});
+{% endfor %}
 
 </script>
 
