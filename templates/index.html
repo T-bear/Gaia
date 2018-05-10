@@ -97,12 +97,12 @@ data.add([
 
 {% set node_loop = loop %}
 
-	
+/*	
 console.log('{{loop}}')
- var edges = new vis.DataSet([
+var edges = new vis.DataSet([
         //{from: '{{ node_loop.index}}', to: '{{ node_loop.index }}'},  
     ]);
-
+*/
 {% endfor %}
  	
 
@@ -112,7 +112,7 @@ console.log('{{loop}}')
     // provide the data in the vis format
     var data = {
         nodes: nodes,
-        edges: edges,
+       // edges: edges,
         data: data  
     };
     
@@ -125,7 +125,7 @@ console.log('{{loop}}')
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
     var name = data.data._data[ids].text[2];   
-
+	console.log(city,data,name)
     var clickedNodes = nodes.get(ids);
     if (ids != undefined ){
     	$("#myModal").modal();
