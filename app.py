@@ -45,6 +45,7 @@ def add_to_db():
         result = db.greenhous.insert_one(initial_things)
         #print result.inserted_ids
 	return "added"
+
 #show thing collection as Json
 @app.route('/things/', methods=['GET'])
 def get_thing():
@@ -55,41 +56,6 @@ def get_thing():
         things = dumps(things_list)
         return things
 
-@app.route('/test', methods=['GET'])
-def get_sensor_data():
-
-
-        # Get the thing collection
-        things_collection = db.greenhous.find()
-    # Create JSON-data from collection via a Python list
-        things_list = list(things_collection)
-        things = dumps(things_list)
-	for name in things_list:
-		print (name)
-        return "yolo"
-
-@app.route('/<city>/<location>/<name>/', methods=['GET'])
-def greenhouse(city, location, name):
-	things_collection = db.greenhous.find()
-
-	things_list = list(things_collection)
-
-	for x in things_list:
-		city = city
-		location = location
-		name = name
-
-	return "X" #render_template('vaxthus.html', things_list=things_list)
-
-@app.route('/star/', methods=['GET'])
-def get_one_star(name):
-  star = mongo.pangaea.greenhous
-  s = star.find_one({'name' : name})
-  if s:
-    output = {'name' : s['name']}
-  else:
-    output = "No such name"
-  return jsonify({'result' : output})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
