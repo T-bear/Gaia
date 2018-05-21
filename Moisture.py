@@ -33,7 +33,7 @@ def data(channel):
                                                 "city": "Karlshamn",
                                                 "location": "BTH",
                                                 "interaction": [{
-                                                    "@type": ["humiditysensor": "True"],
+                                                    "@type": {"humiditysensor": "True"},
                                                     "name": "status",
                                                     "schema": {"type": "string"},
                                                     "writable": False,
