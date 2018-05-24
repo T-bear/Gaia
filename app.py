@@ -62,7 +62,8 @@ def get_city(city):
     city = db.greenhous.find({"city": city})
     if city.count() <= 0:
         #raise UsageError("No such city (name)", status_code=400)
-        return None
+        return "No city found"
+
 	data = to_json(city)
 	return render_template('vaxthus.html', data = cityData)
 
