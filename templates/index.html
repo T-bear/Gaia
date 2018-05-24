@@ -59,7 +59,8 @@
 		<div class="col-lg">
   	<h1>Växthus</h1>
 <div id="mynetwork"></div>
-</div>
+    </div>
+    
 </div>
 </div>
 
@@ -78,6 +79,7 @@
 
 {% for house in houses %}
 {% if house['name'] not in nodes %}
+
 nodes.add({
 	id: '{{ loop.index }}', 
     label: '{{ house['name'] }}',
@@ -85,9 +87,9 @@ nodes.add({
     );
 
 data.add([
-  {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']}
-  
+  {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']} 
 ]);
+
 {% endif %}
 {% set node_loop = loop %}
 
@@ -98,8 +100,6 @@ var edges = new vis.DataSet([
     ]);
 */
 {% endfor %}
- 	
-
     // create a network
     var container = document.getElementById('mynetwork');
 
@@ -113,6 +113,7 @@ var edges = new vis.DataSet([
     var options = {};
     // initialize your network!
     var network = new vis.Network(container, data, options);
+    network.fit();
     network.on( 'click', function(properties) {
     var ids = properties.nodes;
     

@@ -3,9 +3,9 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 
 app = Flask(__name__)
-
 client = MongoClient('localhost')
 db = client['pangaea']
+
 
 # Convert MongoDB to JSON
 def to_json(data):
@@ -63,7 +63,8 @@ def get_city(city):
     if city.count() <= 0:
         #raise UsageError("No such city (name)", status_code=400)
         return None
-    return to_json(city)
+	data = to_json(city)
+	return render_template('vaxthus.html',cityData = data )
 
 @app.route('/things/<location>/name', methods=['GET'])
 def get_thingactors(location):
