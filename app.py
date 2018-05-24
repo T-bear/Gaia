@@ -65,7 +65,7 @@ def get_city(city):
         return "No city found"
 
 	data = to_json(city)
-	return render_template('vaxthus.html', data = cityData)
+	return render_template('vaxthus.html', data = city)
 
 @app.route('/<location>/name', methods=['GET'])
 def get_thingactors(location):
