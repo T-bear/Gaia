@@ -57,7 +57,7 @@ def get_thing():
         return things
 
 @app.route('/<city>/', methods=['GET'])
-def get_city():
+def get_city(city):
     city = db.greenhous.find({"city": city})
     if city.count() <= 0:
         raise UsageError("No such city (name)", status_code=400)
