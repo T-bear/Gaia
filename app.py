@@ -56,7 +56,7 @@ def get_thing():
         things = dumps(things_list)
         return things
 
-@app.roue('/<city>/', methods=['GET'])
+@app.route('/<city>/', methods=['GET'])
 def get_city():
     city = db.greenhous.find({"city": city})
     if city.count() <= 0:
