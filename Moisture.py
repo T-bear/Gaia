@@ -27,7 +27,7 @@ except ConfigurationError:
 def data(channel):
         if GPIO.input(channel):
             #W3C standardisation of a thing with a revised description for a thing in a greenhouse.
-                data = db.greenhous.insert_one({"@context": ["https://tillsammansodling/karlshamn/bth/gaia"],
+                data = db.greenhous.update_one({"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
                                                 "@type": ["vaxthus"],
                                                 "name": "Gaia",
                                                 "city": "Karlshamn",
@@ -39,13 +39,13 @@ def data(channel):
                                                     "writable": False,
                                                     "observable": True,
                                                     "form": [{
-                                                        "href": "tillsammansodling/karlshamn/gaia/status",
+                                                        "href": "https://155.4.72.38:5000/karlshamn/gaia/status",
                                                         "mediaType": "application/json"
                                                     }]
                                                 }]
                                                })
         else:
-                data = db.greenhous.insert_one({"@context": ["https://tillsammansodling/karlshamn/bth/gaia"],
+                data = db.greenhous.update_one({"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
     			                                "@type": ["vaxthus"],
     			                                "name": "Gaia",
     			                                "city": "Karlshamn",
@@ -57,7 +57,7 @@ def data(channel):
                                                     "writable": False,
                                                     "observable": True,
                                                     "form": [{
-                                                        "href": "tillsammansodling/karlshamn/gaia/status",
+                                                        "href": "https://155.4.72.38:5000/karlshamn/gaia/status",
                                                         "mediaType": "application/json"
                                                     }]
                                                 }]

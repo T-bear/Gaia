@@ -66,5 +66,15 @@ def get_city(city):
 	data = to_json(city)
 	return render_template('vaxthus.html', data = cityData)
 
+@app.route('/things/<location>/name', methods=['GET'])
+def get_thingactors(location):
+    location = db.greenhous.find({"location": location})
+    if location.count() <= 0:
+        #raise UsageError("No such thing (name)", status_code=400)
+        return None
+    for data in location:
+        location_dict = json.loads(to_json(data))
+    return to_json(location_dict['name'])
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
