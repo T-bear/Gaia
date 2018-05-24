@@ -10,15 +10,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/vis.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
        <style type="text/css">
         #mynetwork {
             width: 600px;
@@ -26,16 +23,12 @@
             border: 1px solid lightgray;
         }
     	</style>
-
   </head>
   <body>
-
   <script src="{{ url_for('static',filename='js/visjs/vis.js') }}"></script>
-
   	<!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
     
       <div class="modal-content">
         <div class="modal-header">
@@ -64,7 +57,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg">
-  	<h1>Test</h1>
+  	<h1>Växthus</h1>
 <div id="mynetwork"></div>
 </div>
 </div>
@@ -84,6 +77,7 @@
     //var edges = new vis.DataSet();
 
 {% for house in houses %}
+{% if house['name'] not in nodes %}
 nodes.add({
 	id: '{{ loop.index }}', 
     label: '{{ house['name'] }}',
@@ -94,7 +88,7 @@ data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']}
   
 ]);
-
+{% endif %}
 {% set node_loop = loop %}
 
 /*	
@@ -124,12 +118,12 @@ var edges = new vis.DataSet([
     
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
-    var name = data.data._data[ids].text[2];   
-	console.log(city,data,name)
+    var name = data.data._data[ids].text[2];
+
     var clickedNodes = nodes.get(ids);
-    if (ids != undefined ){
+    if (ids != undefined){
     	$("#myModal").modal();
-    	var strLink = "https://tillsammansodling/" + city + "/" + location + "/" + name;
+    	var strLink = "https://tillsammansodling.nu/" + city + "/" + location + "/" + name;
     	var adr = strLink.toLowerCase();
 
 
