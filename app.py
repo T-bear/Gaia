@@ -66,7 +66,7 @@ def get_city(city):
 
 	data = list(city)
     city = dumps(data)
-return render_template('vaxthus.html', city = data)
+    return render_template('vaxthus.html', city = data)
 
 @app.route('/<location>/name', methods=['GET'])
 def get_thingactors(location):
