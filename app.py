@@ -62,7 +62,7 @@ def get_city():
     if city.count() <= 0:
         raise UsageError("No such city (name)", status_code=400)
         return None
-    return to_json(thing)
+    return to_json(city)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
