@@ -1,7 +1,6 @@
 from flask import  Flask, render_template, jsonify, redirect
 from pymongo import MongoClient
 from bson.json_util import dumps
-from httperrors import UsageError
 
 app = Flask(__name__)
 
