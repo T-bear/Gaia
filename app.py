@@ -60,13 +60,13 @@ def get_thing():
 @app.route('/<city>/', methods=['GET'])
 def get_city(city):
     city = db.greenhous.find({"city": city})
-        if city.count() <= 0:
+    if city.count() <= 0:
         #raise UsageError("No such city (name)", status_code=400)
-            return "No city found"
+    return "No city found"
 
 	data = list(city)
     city = dumps(data)
-	return render_template('vaxthus.html', city = data)
+return render_template('vaxthus.html', city = data)
 
 @app.route('/<location>/name', methods=['GET'])
 def get_thingactors(location):
