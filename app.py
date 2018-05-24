@@ -11,6 +11,7 @@ db = client['pangaea']
 def to_json(data):
     return dumps(data)
 
+
 @app.route('/')
 def index():
     greenhouses = db.greenhous.find()
@@ -23,7 +24,7 @@ def index():
 def add_to_db():
 
         initial_things = {
-    			"@context": ["https://tillsammansodling/karlshamn/bth/gaia"],
+    			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
     			"@type": ["vaxthus"],
     			"name": "gaia",
     			"city": "Karlshamn",
@@ -37,7 +38,7 @@ def add_to_db():
         			"writable": False,
         			"observable": True,
         			"form": [{
-            				"href": "tillsammansodling/karlshamn/gaia/status",
+            				"href": "https://155.4.72.38:5000/karlshamn/gaia/status",
             				"mediaType": "application/json"
         				}]
     				}]
@@ -56,6 +57,13 @@ def get_thing():
         things = dumps(things_list)
         return things
 
+@app.route('/<city>/', methods=['GET'])
+def get_city(city):
+    city = db.greenhous.find({"city": city})
+    if city.count() <= 0:
+        #raise UsageError("No such city (name)", status_code=400)
+        return None
+    return to_json(city)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
