@@ -73,7 +73,7 @@ def get_thingactors(location):
         #raise UsageError("No such thing (name)", status_code=400)
         return None
     for data in location:
-        location_dict = json.loads(to_json(data))
+        location_dict = to_json(data)
     return to_json(location_dict['name'])
 
 if __name__ == '__main__':
