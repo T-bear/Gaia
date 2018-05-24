@@ -3,3 +3,9 @@ h1 {
 	text-align: center;
 	margin-top: 150px;
 }
+
+.container {
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+}

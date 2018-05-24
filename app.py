@@ -3,9 +3,9 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 
 app = Flask(__name__)
-
 client = MongoClient('localhost')
 db = client['pangaea']
+
 
 # Convert MongoDB to JSON
 def to_json(data):
