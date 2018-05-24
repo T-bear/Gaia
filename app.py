@@ -11,11 +11,6 @@ db = client['pangaea']
 def to_json(data):
     return dumps(data)
 
-@app.errorhandler(UsageError)
-def handle_invalid_usage(error):
-    response = jsonify(error.to_dict())
-    response.status_code = error.status_code
-    return response
 
 @app.route('/')
 def index():
@@ -29,7 +24,7 @@ def index():
 def add_to_db():
 
         initial_things = {
-    			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
+    			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"@],
     			"@type": ["vaxthus"],
     			"name": "gaia",
     			"city": "Karlshamn",
@@ -66,7 +61,7 @@ def get_thing():
 def get_city(city):
     city = db.greenhous.find({"city": city})
     if city.count() <= 0:
-        raise UsageError("No such city (name)", status_code=400)
+        #raise UsageError("No such city (name)", status_code=400)
         return None
     return to_json(city)
 
