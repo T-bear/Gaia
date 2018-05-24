@@ -1,7 +1,7 @@
 from flask import  Flask, render_template, jsonify, redirect
 from pymongo import MongoClient
 from bson.json_util import dumps
-from httperrors import  UsageError
+from httperrors import UsageError
 
 app = Flask(__name__)
 
@@ -11,6 +11,12 @@ db = client['pangaea']
 # Convert MongoDB to JSON
 def to_json(data):
     return dumps(data)
+
+@app.errorhandler(UsageError)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 @app.route('/')
 def index():
