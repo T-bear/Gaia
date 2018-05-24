@@ -64,7 +64,7 @@ def get_city(city):
         #raise UsageError("No such city (name)", status_code=400)
         return None
 	data = to_json(city)
-	return render_template('vaxthus.html',cityData = data )
+	return render_template('vaxthus.html', data = cityData)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
