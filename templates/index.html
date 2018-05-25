@@ -69,7 +69,7 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet();
-    //var greenhouse = new vis.DataSet();
+    
 
     // add items
     // note that the data items can contain different properties and data formats
@@ -88,13 +88,7 @@ nodes.add({
     label: '{{ house['city'] }}',
     shape: 'box'}
     );
-/*
-greenhouse.add({
-  id: '{{ loop.index }}',
-  label: '{{house['name']}}',
-  shape: 'box'}
-  );
-*/
+
 
 data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']} 
@@ -106,7 +100,7 @@ console.log('{{loop}}')
 
 /*
 var edges = new vis.DataSet([
-        {from: '{{ greenhouse.revindex }}', to: '{{ nodes.id }}'},  
+        {from: '{{ nodes.id}}', to: '{{ nodes.id }}'},  
     ]);
 */
 
@@ -118,7 +112,7 @@ var edges = new vis.DataSet([
     var data = {
        nodes: nodes,
        edges: edges,
-       //greenhouse: greenhouse,
+       
        data: data  
     };
     
