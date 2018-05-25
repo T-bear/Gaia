@@ -26,7 +26,7 @@ def add_to_db():
 
         initial_things = {
                             ({"$and": [{"$oid": "5b07c63274fece7f5b506a4d",
-                            "humiditysensor": {"FUNKAR DETTA ELLER!?"}
+                            "humiditysensor": "FUNKAR DETTA ELLER!?"
                                         }]
                              })
 			             }
