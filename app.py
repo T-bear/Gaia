@@ -27,7 +27,7 @@ def add_to_db():
         initial_things = {
     			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
     			"@type": ["vaxthus"],
-    			"name": "Gaia",
+    			"name": "Eden",
     			"city": "Karlshamn",
     			"location": "BTH",
     			"interaction": [{
