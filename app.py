@@ -25,10 +25,10 @@ def index():
 def add_to_db():
 
         initial_things = {
-    			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
+    			"@context": ["https://155.4.72.38:5000/karlskrona/bth/vilan"],
     			"@type": ["vaxthus"],
-    			"name": "Eden",
-    			"city": "Karlshamn",
+    			"name": "Vilan",
+    			"city": "Karlskrona",
     			"location": "BTH",
     			"interaction": [{
         			"@type": [{
@@ -39,7 +39,7 @@ def add_to_db():
         			"writable": False,
         			"observable": True,
         			"form": [{
-            				"href": "https://155.4.72.38:5000/karlshamn/gaia/status",
+            				"href": "https://155.4.72.38:5000/karlskrona/bth/vilan/status",
             				"mediaType": "application/json"
         				}]
     				}]
