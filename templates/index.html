@@ -80,6 +80,7 @@
 
 {% for house in houses %}
 
+if(house != nodes) {
 nodes.add({
 	id: '{{ loop.index }}', 
     label: '{{ house['city'] }}',
@@ -89,7 +90,7 @@ nodes.add({
 data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']} 
 ]);
-
+}
 {% set node_loop = loop %}
 
 /*	
