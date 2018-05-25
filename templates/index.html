@@ -68,7 +68,7 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet();
-
+    console.log(nodes)
     // add items
     // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
@@ -80,8 +80,8 @@
 
 {% for house in houses %}
 
-if(!({{ house['name'] }} in nodes)) {
-  
+if(!({{ 'label': house['city'] }} in nodes)) {
+
 nodes.add({
 	id: '{{ loop.index }}', 
     label: '{{ house['city'] }}',
