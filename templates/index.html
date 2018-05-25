@@ -69,16 +69,13 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet();
-    
 
     // add items
     // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
 
-
-
     // create an array with edges
-    var edges = new vis.DataSet();
+    //var edges = new vis.DataSet();
 
 {% for house in houses %}
 {% if not house['city'] == house['city'] %}
@@ -100,7 +97,7 @@ console.log('{{loop}}')
 
 /*
 var edges = new vis.DataSet([
-        {from: '{{ nodes.id}}', to: '{{ nodes.id }}'},  
+        //{from: '{{ nodes.id}}', to: '{{ nodes.id }}'},  
     ]);
 */
 
@@ -111,7 +108,7 @@ var edges = new vis.DataSet([
     // provide the data in the vis format
     var data = {
        nodes: nodes,
-       edges: edges,
+       
        
        data: data  
     };
