@@ -69,17 +69,16 @@ def get_city(city):
     cityData = dumps(city_list)
     return render_template('vaxthus.html', cityData = city_list)
 
-@app.route('/<location>/name', methods=['GET'])
-def get_thingactors(location):
-    location = db.greenhouse.find({"location": location})
-    if location.count() <= 0:
+@app.route('/<city>/<location>/<name>/', methods=['GET'])
+def get_url(location):
+    url = db.greenhouse.find([{"city": city, "location": location, "name": name}])
+    if url.count() <= 0:
         #raise UsageError("No such thing (name)", status_code=400)
-        return None
+        return "no url found"
 
-    for name in location:
-        location_dict = json.loads(to_json(name))
-
-    return to_json(location_dict['name'])
+    url_list = list(city)
+    urlData = dumps(url_list)
+    return render_template('vaxthus.html', urlData = url_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
