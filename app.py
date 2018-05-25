@@ -25,26 +25,13 @@ def index():
 def add_to_db():
 
         initial_things = {
-    			"@context": ["https://155.4.72.38:5000/karlskrona/bth/vilan"],
-    			"@type": ["vaxthus"],
-    			"name": "Vilan",
-    			"city": "Karlskrona",
-    			"location": "BTH",
-    			"interaction": [{
-        			"@type": [{
-                  			"humiditysensor": "True"
-                  			}],
-        			"name": "status",
-        			"schema": {"type": "string"},
-        			"writable": False,
-        			"observable": True,
-        			"form": [{
-            				"href": "https://155.4.72.38:5000/karlskrona/bth/vilan/status",
-            				"mediaType": "application/json"
-        				}]
-    				}]
-			}
-        result = db.greenhouse.insert_one(initial_things)
+                            ("$oid": "5b07c63274fece7f5b506a4d",
+                            "interaction": [{
+                            "@type": {"humiditysensor": "FUNKAR DETTA ELLER!?"}
+                                        }]
+                            )
+			             }
+        result = db.greenhouse.update_one(initial_things)
         #print result.inserted_ids
 	return "added"
 
@@ -62,7 +49,6 @@ def get_thing():
 def get_city(city):
     city = db.greenhouse.find({"city": city})
     if city.count() <= 0:
-        #raise UsageError("No such city (name)", status_code=400)
         return "No city found"
 
     city_list = list(city)
@@ -73,7 +59,6 @@ def get_city(city):
 def get_url(city, location, name):
     url = db.greenhouse.find({"$and": [{"city": city, "location": location, "name": name}]})
     if url.count() <= 0:
-        #raise UsageError("No such thing (name)", status_code=400)
         return "no url found"
 
     url_list = list(city)
