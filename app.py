@@ -71,14 +71,14 @@ def get_city(city):
 
 @app.route('/<city>/<location>/<name>/', methods=['GET'])
 def get_url(city, location, name):
-    url = db.greenhouse.find([{"city": city, "location": location, "name": name}])
+    url = db.greenhouse.find({"$and": [{"city": city, "location": location, "name": name}]})
     if url.count() <= 0:
         #raise UsageError("No such thing (name)", status_code=400)
         return "no url found"
 
     url_list = list(city)
     urlData = dumps(url_list)
-    return render_template('vaxthus.html', urlData = url_list)
+    return render_template('ny.html', urlData = url_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
