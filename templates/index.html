@@ -68,6 +68,7 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet();
+    var greenhouse = new vis.DataSet();
 
     // add items
     // note that the data items can contain different properties and data formats
@@ -76,7 +77,7 @@
 
 
     // create an array with edges
-    //var edges = new vis.DataSet();
+    var edges = new vis.DataSet();
 
 {% for house in houses %}
 {% if house['city'] not in nodes %}
@@ -87,6 +88,12 @@ nodes.add({
     shape: 'box'}
     );
 
+greenhouse.add({
+  id: '{{ loop.index }}',
+  label: '{{house['name']}}',
+  shape: 'box'}
+  );
+
 data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']} 
 ]);
@@ -94,21 +101,22 @@ data.add([
 {% endif %}
 {% set node_loop = loop %}
 
-/*	
+
 console.log('{{loop}}')
 var edges = new vis.DataSet([
-        //{from: '{{ node_loop.index}}', to: '{{ node_loop.index }}'},  
+        {from: '{{ greenhouse.id }}', to: '{{ nodes.id }}'},  
     ]);
-*/
+
 {% endfor %}
     // create a network
     var container = document.getElementById('mynetwork');
 
     // provide the data in the vis format
     var data = {
-        nodes: nodes,
-       // edges: edges,
-        data: data  
+       nodes: nodes,
+       edges: edges,
+       greenhouse: greenhouse,
+       data: data  
     };
     
     var options = {};
@@ -121,7 +129,7 @@ var edges = new vis.DataSet([
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
     var name = data.data._data[ids].text[2];
-
+    /*
     var clickedNodes = nodes.get(ids);
     if (ids != undefined){
     	$("#myModal").modal();
@@ -133,7 +141,11 @@ var edges = new vis.DataSet([
     	document.getElementById("location").textContent = location;
     	document.getElementById("name").textContent = name;  
 };
+*/
+    var clickedNodes = nodes.get(ids);
+    if (ids != undefined){
 
+    }
 });
 
 </script>
