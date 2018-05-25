@@ -80,7 +80,8 @@
 
 {% for house in houses %}
 
-if(house != nodes) {
+if(!({{ house['name'] }} in nodes)) {
+  
 nodes.add({
 	id: '{{ loop.index }}', 
     label: '{{ house['city'] }}',
