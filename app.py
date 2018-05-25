@@ -70,7 +70,7 @@ def get_city(city):
     return render_template('vaxthus.html', cityData = city_list)
 
 @app.route('/<city>/<location>/<name>/', methods=['GET'])
-def get_url(location):
+def get_url(city, location, name):
     url = db.greenhouse.find([{"city": city, "location": location, "name": name}])
     if url.count() <= 0:
         #raise UsageError("No such thing (name)", status_code=400)
