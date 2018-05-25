@@ -27,7 +27,6 @@
   <body>
   <script src="{{ url_for('static',filename='js/visjs/vis.js') }}"></script>
   	<!-- Modal -->
-  
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -74,11 +73,13 @@
     // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
 
+
+
     // create an array with edges
     //var edges = new vis.DataSet();
 
 {% for house in houses %}
-{% if not house['city'] == house['city'] %}
+{% if house['city'] not in nodes %}
 
 nodes.add({
 	id: '{{ loop.index }}', 
@@ -86,31 +87,28 @@ nodes.add({
     shape: 'box'}
     );
 
-
 data.add([
   {id: '{{ loop.index }}', text: ['{{house.city}}','{{house.location}}', '{{house.name}}']} 
 ]);
 
 {% endif %}
 {% set node_loop = loop %}
-console.log('{{loop}}')
 
-/*
+/*	
+console.log('{{loop}}')
 var edges = new vis.DataSet([
-        //{from: '{{ nodes.id}}', to: '{{ nodes.id }}'},  
+        //{from: '{{ node_loop.index}}', to: '{{ node_loop.index }}'},  
     ]);
 */
-
 {% endfor %}
     // create a network
     var container = document.getElementById('mynetwork');
 
     // provide the data in the vis format
     var data = {
-       nodes: nodes,
-       
-       
-       data: data  
+        nodes: nodes,
+       // edges: edges,
+        data: data  
     };
     
     var options = {};
@@ -123,7 +121,7 @@ var edges = new vis.DataSet([
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
     var name = data.data._data[ids].text[2];
- 
+
     var clickedNodes = nodes.get(ids);
     if (ids != undefined){
     	$("#myModal").modal();
