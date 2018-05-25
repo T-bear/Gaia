@@ -27,7 +27,7 @@ def add_to_db():
         initial_things = {
                             ({"$oid": "5b07c63274fece7f5b506a4d",
                             "interaction": {
-                            "@type": {"humiditysensor": "FUNKAR DETTA ELLER!?"}
+                            "@type": ["humiditysensor": "FUNKAR DETTA ELLER!?"]
                                         }
                              })
 			             }
