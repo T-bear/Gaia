@@ -79,7 +79,7 @@
     //var edges = new vis.DataSet();
 
 {% for house in houses %}
-{% if house['city'] not in nodes %}
+{% if house['city'] is none %}
 
 nodes.add({
 	id: '{{ loop.index }}', 
