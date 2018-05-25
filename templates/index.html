@@ -69,20 +69,21 @@
     // create an array with nodes
     var nodes = new vis.DataSet();
 
+    // add items
+    // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
 
-// add items
-// note that the data items can contain different properties and data formats
+
 
     // create an array with edges
     //var edges = new vis.DataSet();
 
 {% for house in houses %}
-{% if house['name'] not in nodes %}
+{% if house['city'] not in nodes %}
 
 nodes.add({
 	id: '{{ loop.index }}', 
-    label: '{{ house['name'] }}',
+    label: '{{ house['city'] }}',
     shape: 'box'}
     );
 
@@ -126,7 +127,6 @@ var edges = new vis.DataSet([
     	$("#myModal").modal();
     	var strLink = "https://tillsammansodling.nu/" + city + "/" + location + "/" + name;
     	var adr = strLink.toLowerCase();
-
 
     	document.getElementById("greenhouseLink").setAttribute("href",adr);
     	document.getElementById("city").textContent = city;
