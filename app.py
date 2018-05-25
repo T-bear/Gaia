@@ -15,7 +15,7 @@ def to_json(data):
 
 @app.route('/')
 def index():
-    greenhouses = db.greenhous.find()
+    greenhouses = db.greenhouse.find()
     greenhouses_list = list(greenhouses)
     houses = dumps(greenhouses_list)
     return render_template('index.html', houses = greenhouses_list)
@@ -27,13 +27,13 @@ def add_to_db():
         initial_things = {
     			"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
     			"@type": ["vaxthus"],
-    			"name": "gaia",
+    			"name": "Gaia",
     			"city": "Karlshamn",
-    			"location": "bth",
+    			"location": "BTH",
     			"interaction": [{
-        			"@type": [{"lightsensor": "1",
-                  			"humiditysensor": "2",
-                  			"moisturesensor": "3"}],
+        			"@type": [{
+                  			"humiditysensor": "True"
+                  			}],
         			"name": "status",
         			"schema": {"type": "string"},
         			"writable": False,
@@ -44,7 +44,7 @@ def add_to_db():
         				}]
     				}]
 			}
-        result = db.greenhous.insert_one(initial_things)
+        result = db.greenhouse.insert_one(initial_things)
         #print result.inserted_ids
 	return "added"
 
@@ -52,7 +52,7 @@ def add_to_db():
 @app.route('/things/', methods=['GET'])
 def get_thing():
 	# Get the thing collection
-        things_collection = db.greenhous.find()
+        things_collection = db.greenhouse.find()
     # Create JSON-data from collection via a Python list
         things_list = list(things_collection)
         things = dumps(things_list)
@@ -60,7 +60,7 @@ def get_thing():
 
 @app.route('/<city>/', methods=['GET'])
 def get_city(city):
-    city = db.greenhous.find({"city": city})
+    city = db.greenhouse.find({"city": city})
     if city.count() <= 0:
         #raise UsageError("No such city (name)", status_code=400)
         return "No city found"
@@ -71,7 +71,7 @@ def get_city(city):
 
 @app.route('/<location>/name', methods=['GET'])
 def get_thingactors(location):
-    location = db.greenhous.find({"location": location})
+    location = db.greenhouse.find({"location": location})
     if location.count() <= 0:
         #raise UsageError("No such thing (name)", status_code=400)
         return None
