@@ -79,7 +79,7 @@
     //var edges = new vis.DataSet();
 
 {% for house in houses %}
-{% if house.city not in nodes %}
+
 
 nodes.add({
 	id: '{{ loop.index }}', 
@@ -121,7 +121,7 @@ var edges = new vis.DataSet([
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
     var name = data.data._data[ids].text[2];
-    console.log(name)
+
     var clickedNodes = nodes.get(ids);
     if (ids != undefined){
     	$("#myModal").modal();
