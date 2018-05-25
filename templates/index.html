@@ -27,6 +27,7 @@
   <body>
   <script src="{{ url_for('static',filename='js/visjs/vis.js') }}"></script>
   	<!-- Modal -->
+    <!--
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -52,7 +53,7 @@
           
     </div>
   </div>
-
+-->
 
 <div class="container">
 	<div class="row">
@@ -80,7 +81,7 @@
     var edges = new vis.DataSet();
 
 {% for house in houses %}
-{% if not house['city']  %}
+{% if not house['city'] == house['city'] %}
 
 nodes.add({
 	id: '{{ loop.index }}', 
@@ -104,7 +105,7 @@ data.add([
 
 console.log('{{loop}}')
 var edges = new vis.DataSet([
-        {from: '{{ greenhouse.id }}', to: '{{ nodes.id }}'},  
+        {from: '{{ greenhouse.revindex }}', to: '{{ nodes.id }}'},  
     ]);
 
 {% endfor %}
