@@ -65,9 +65,9 @@ def get_city(city):
         #raise UsageError("No such city (name)", status_code=400)
         return "No city found"
 
-	city = list(city)
-    data = json.loads(to_json(city))
-    return render_template('vaxthus.html', data = city)
+    city_list = list(city)
+    cityData = dumps(city_list)
+    return render_template('vaxthus.html', cityData = city_list)
 
 @app.route('/<location>/name', methods=['GET'])
 def get_thingactors(location):
