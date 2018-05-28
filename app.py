@@ -24,7 +24,8 @@ def index():
 @app.route('/add')
 def add_to_db():
 
-    result = db.greenhouse.update({"_id": "5b07c63274fece7f5b506a4d"}, {"$set": {"humiditysensor": "FUNKAR DETTA ELLER!?"}})
+  
+    result = db.greenhouse.update({"_id": {"$oid": "5b07c63274fece7f5b506a4d"}}, {"$set": {"humiditysensor": "FUNKAR DETTA ELLER!?"}})
     #print result.inserted_ids
     return "added"
 
