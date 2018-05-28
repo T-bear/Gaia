@@ -8,10 +8,6 @@
     var data = new vis.DataSet(data);
 
 
-
-    // create an array with edges
-    //var edges = new vis.DataSet();
-
 {% for house in houses %}
 
 if(!({{ house['city'] }} in nodes)) {
@@ -19,7 +15,7 @@ if(!({{ house['city'] }} in nodes)) {
 nodes.add({
 	id: '{{ loop.index }}',
     label: '{{ house['city'] }}',
-    shape: 'box'}
+    shape: 'Big circle'}
     );
 
 data.add([
@@ -28,12 +24,7 @@ data.add([
 }
 {% set node_loop = loop %}
 
-/*
-console.log('{{loop}}')
-var edges = new vis.DataSet([
-        //{from: '{{ node_loop.index}}', to: '{{ node_loop.index }}'},
-    ]);
-*/
+
 {% endfor %}
     // create a network
     var container = document.getElementById('mynetwork');
