@@ -1,4 +1,4 @@
-//console.log("Still connected boss")
+
 
     // create an array with nodes
     var nodes = new vis.DataSet();
