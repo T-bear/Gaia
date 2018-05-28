@@ -2,6 +2,7 @@ from flask import  Flask, render_template, jsonify, redirect
 from pymongo import MongoClient
 from bson.json_util import dumps
 import json
+from bson.objectId import ObjectId
 
 app = Flask(__name__)
 client = MongoClient('localhost')
@@ -24,12 +25,9 @@ def index():
 @app.route('/add')
 def add_to_db():
 
-        initial_things = {
-                            ({"$and": [{"$oid": "5b07c63274fece7f5b506a4d",
-                            "humiditysensor": "FUNKAR DETTA ELLER!?"
-                                        }]
-                             })
-			             }
+        initial_things = {"_id": ObjectId("5b07c63274fece7f5b506a4d")},
+                            {"$set": {"humiditysensor": "FUNKAR DETTA ELLER!?"}}
+                                        
         result = db.greenhouse.update_one(initial_things)
         #print result.inserted_ids
 	return "added"
