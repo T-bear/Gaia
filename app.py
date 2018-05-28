@@ -67,7 +67,7 @@ def get_city(city):
 
 @app.route('/<city>/<location>/<name>/', methods=['GET'])
 def get_url(city, location, name):
-    url = db.greenhouse.find({"$toLower": {"$and": [{"city": city, "location": location, "name": name}]}})
+    url = db.greenhouse.find({"$and": [{"city": { $toLower: city }, "location": {$toLower: location}, "name": { $toLower: name }}]})
     if url.count() <= 0:
         return "no url found"
 
