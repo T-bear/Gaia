@@ -1,6 +1,6 @@
+	console.log("Connected baws");
 
-
-    // create an array with nodes
+	// create an array with nodes
     var nodes = new vis.DataSet();
     
     // add items
