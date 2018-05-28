@@ -2,7 +2,7 @@
 
     // create an array with nodes
     var nodes = new vis.DataSet();
-    console.log(nodes)
+    
     // add items
     // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
