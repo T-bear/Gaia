@@ -24,10 +24,25 @@ def index():
 #Add thing to db as W3C standard
 @app.route('/add')
 def add_to_db():
-
+    
+    add_desc = {({"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
+                  "@type": ["vaxthus"],
+                  "name": "Gaia",
+                  "city": "Karlshamn",
+                  "location": "BTH",
+                  "interaction": [{"@type": {"humiditysensor": "True"},
+                                   "name": "status",
+                                   "schema": {"type": "string"},
+                                   "writable": False,
+                                   "observable": True,
+                                   "form": [{"href": "https://155.4.72.38:5000/karlshamn/gaia/status",
+                                             "mediaType": "application/json"
+                                            }]
+                                    }]
+                                })
+    }
   
-    result = db.greenhouse.update({"_id": ObjectId("5b07c63274fece7f5b506a4d")}, {"$set": {"humiditysensor": "FUNKAR DETTA ELLER!?"}})
-    #print result.inserted_ids
+    result = db.greenhouse.insert(add_desc)
     return "added"
 
 #show thing collection as Json
