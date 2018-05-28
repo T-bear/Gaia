@@ -49,11 +49,11 @@ def add_to_db():
 @app.route('/things/', methods=['GET'])
 def get_thing():
 	# Get the thing collection
-        things_collection = db.greenhouse.find()
+    things_collection = db.greenhouse.find()
     # Create JSON-data from collection via a Python list
-        things_list = list(things_collection)
-        things = dumps(things_list)
-        return things
+    things_list = list(things_collection)
+    things = dumps(things_list)
+    return things
 
 @app.route('/<city>/', methods=['GET'])
 def get_city(city):
