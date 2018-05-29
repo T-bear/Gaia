@@ -4,7 +4,8 @@ from bson.json_util import dumps
 from bson.objectid import ObjectId
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
 client = MongoClient('localhost')
 db = client['pangaea']
 
