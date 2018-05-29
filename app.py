@@ -10,11 +10,7 @@ app = Flask(__name__)
 client = MongoClient('localhost')
 db = client['pangaea']
 
-def get_resource_as_string(name, charset='utf-8'):
-    with app.open_resource(name) as f:
-        return f.read().decode(charset)
-
-app.jinja_env.globals['get_resource_as_string'] = get_resource_as_string
+app.static_url_path = '/home/pi/git/humor/Gaia/static/'
 
 # Convert MongoDB to JSON
 def to_json(data):
