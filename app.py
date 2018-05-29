@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 import json
 
 app = Flask(__name__)
-app.static_url_path = 'http://155.4.72.38:5000/static/'
+app.static_url_path = './static'
 client = MongoClient('localhost')
 db = client['pangaea']
 
