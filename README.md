@@ -3,7 +3,7 @@ a web aplication to display a greenhouse for the user.
 
 
 
-<B>Codes and examples copied from other works:</B>
+<B>Codes and examples used from other works:</B>
 
 How to set up a flask server for videostreaming:
 https://blog.miguelgrinberg.com/post/video-streaming-with-flask
