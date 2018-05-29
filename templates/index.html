@@ -93,8 +93,8 @@ data.add([
     if (ids != undefined){
       $("#myModal").modal();
       var strLink = "https://155.4.72.38:5000/" + city + "/" + location + "/" + name;
-      var adr = strLink.toLowerCase();
-      document.getElementById("greenhouseLink").setAttribute("href",adr);
+      //var adr = strLink.toLowerCase();
+      document.getElementById("greenhouseLink").setAttribute("href",strLink);
       document.getElementById("city").textContent = city;
       document.getElementById("location").textContent = location;
       document.getElementById("name").textContent = name;
