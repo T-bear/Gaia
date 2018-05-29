@@ -10,7 +10,7 @@ app = Flask(__name__)
 client = MongoClient('localhost')
 db = client['pangaea']
 
-app.static_folder = '/home/pi/git/humor/Gaia/static'
+app.static_folder = './home/pi/git/humor/Gaia/static'
 
 # Convert MongoDB to JSON
 def to_json(data):
