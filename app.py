@@ -25,7 +25,7 @@ def index():
     return render_template('index.html', houses = greenhouses_list)
 
 #Add thing to db as W3C standard
-@app.route('/add/')
+@app.route('/add')
 def add_to_db():
     
     add_desc = {({"@context": ["https://155.4.72.38:5000/karlshamn/bth/gaia"],
