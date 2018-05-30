@@ -72,7 +72,7 @@ def get_city(city):
 def get_url(city, location, name):
     url = db.greenhouse.find({"$and": [{"city": city, "location": location, "name": name}]})
     if url.count() <= 0:
-        return "no url found"
+        return render_template('vaxthusFalse.html')
 
     url_list = list(city)
     urlData = dumps(url_list)
