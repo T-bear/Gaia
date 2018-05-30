@@ -76,7 +76,7 @@ def get_url(city, location, name):
 
     url_list = list(city)
     urlData = dumps(url_list)
-    return render_template('infoVaxthus.html', urlData = url_list)
+    return render_template('vaxthusTrue.html', urlData = url_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
