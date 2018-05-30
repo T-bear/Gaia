@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 import json
 
 app = Flask(__name__)
-
+app.static_url_path = '/home/pi/git/humor/Gaia/static/'
 
 client = MongoClient('localhost')
 db = client['pangaea']
