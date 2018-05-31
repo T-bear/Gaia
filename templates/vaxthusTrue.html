@@ -13,7 +13,7 @@
   <body>
   {% for data in urlData %}
   <div class="container">
- <h1>{{ data['name'] }} </h1>
+ <h1>{{ data['name'] [:1]}} </h1>
 
   <ul class="list-group">
     <li class="list-group-item">{{ data['humiditysensor'] }}</li>
