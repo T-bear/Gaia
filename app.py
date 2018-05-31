@@ -73,7 +73,7 @@ def get_url(city, location, name):
     if url.count() <= 0:
         return render_template('vaxthusFalse.html')
 
-    url_list = list(city)
+    url_list = list(url)
     urlData = dumps(url_list)
     return render_template('vaxthusTrue.html', urlData = url_list)
 
