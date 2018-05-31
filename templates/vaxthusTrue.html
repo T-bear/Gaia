@@ -18,10 +18,26 @@
 <div class="container">
         {% for data in urlData [:1] %}
         <h1>{{ data['name'] }} </h1>
-  <ul class="list-group">
-    <li class="list-group-item">{{ data['humiditysensor'] }}</li>
 
-  </ul>
+
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sensor</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Jordsensor</td>
+        <td>{{ data['humiditysensor'] }}</td>
+    </tr>
+
+  </tbody>
+</table>
 
 {% endfor %}
 
