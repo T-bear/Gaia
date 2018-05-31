@@ -66,7 +66,6 @@
 nodes.add({
   id: '{{ loop.index }}',
     label: '{{ house['city'] }}',
-    font: {color:'white', background: 'black'},
     shape: 'circle'}
     );
 data.add([
@@ -82,7 +81,20 @@ data.add([
        // edges: edges,
         data: data
     };
-    var options = {};
+    var options = {
+
+        nodes: {
+            color: {
+                background: 'black',
+                fontColor: 'white',
+                border: '',
+                highlight: {
+                    background: 'white',
+                    border: 'black'
+                }
+            }
+        }
+    };
     // initialize your network!
     var network = new vis.Network(container, data, options);
     network.fit();
