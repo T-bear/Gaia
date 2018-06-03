@@ -27,7 +27,7 @@ except ConfigurationError:
 #db.<collection name>.update
 def moistureSensor(channel):
         if GPIO.input(channel):
-            #W3C standardisation of a thing with a revised description for a thing in a greenhouse.
+            #update db when sensor send new event.
                 data = db.greenhous.update({"_id": ObjectId("5b07c63274fece7f5b506a4d")}, {"$set": {"humiditysensor": "Behöver inte vattnas"}})
         else:
                 data = db.greenhous.update({"_id": ObjectId("5b07c63274fece7f5b506a4d")}, {"$set": {"humiditysensor": "Behöver vattnas"}})
