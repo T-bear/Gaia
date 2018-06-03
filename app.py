@@ -23,7 +23,7 @@ def index():
     houses = dumps(greenhouses_list)
     return render_template('index.html', houses = greenhouses_list)
 
-#Add thing to db as W3C standard
+#Add thing to db as W3C standardisation of a thing with a revised description for a thing in a greenhouse.
 @app.route('/add')
 def add_to_db():
     
@@ -57,6 +57,7 @@ def get_thing():
     things = dumps(things_list)
     return things
 
+#show city with greenhouses
 @app.route('/<city>/', methods=['GET'])
 def get_city(city):
     city = db.greenhouse.find({"city": city})
@@ -67,6 +68,7 @@ def get_city(city):
     cityData = dumps(city_list)
     return render_template('vaxthus.html', cityData = city_list)
 
+#show a specific grenhouse´s name, location and city where it is located
 @app.route('/<city>/<location>/<name>/', methods=['GET'])
 def get_url(city, location, name):
     url = db.greenhouse.find({"$and": [{"city": city, "location": location, "name": name}]})
