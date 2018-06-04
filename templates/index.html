@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
      <script src="{{ url_for('static',filename='js/visjs/vis.js') }}"></script>
       {% include 'style.html' %}
+      <!-- style.html is used as a alternative to style.css -->
 </head>
   <body>
     <div id="background">
@@ -58,10 +59,9 @@
 <script type="text/javascript">
   // create an array with nodes
     var nodes = new vis.DataSet();
-    
-    // add items
     // note that the data items can contain different properties and data formats
     var data = new vis.DataSet(data);
+
 {% for house in houses %}
 nodes.add({
   id: '{{ loop.index }}',
@@ -73,6 +73,7 @@ data.add([
 ]);
 {% set node_loop = loop %}
 {% endfor %}
+
     // create a network
     var container = document.getElementById('mynetwork');
     // provide the data in the vis format
@@ -81,6 +82,9 @@ data.add([
        // edges: edges,
         data: data
     };
+
+    // Istantiate diffrent options
+   // Changes the nodes in the network to be circular and the color white
     var options = {
 
         nodes: {
@@ -97,16 +101,20 @@ data.add([
     // initialize your network!
     var network = new vis.Network(container, data, options);
     network.fit();
+    //Added a click event so a modal with the clicked node's data would show.
     network.on( 'click', function(properties) {
     var ids = properties.nodes;
     var city = data.data._data[ids].text[0];
     var location = data.data._data[ids].text[1];
     var name = data.data._data[ids].text[2];
     var clickedNodes = nodes.get(ids);
+
+    // Checks if the user clicks on a node or not
     if (ids != undefined){
       $("#myModal").modal();
       var strLink = "http://155.4.72.38:5000/" + city + "/" + location + "/" + name;
-      //var adr = strLink.toLowerCase();
+      
+       // Creates the content for the modal
       document.getElementById("greenhouseLink").setAttribute("href",strLink);
       document.getElementById("city").textContent = city;
       document.getElementById("location").textContent = location;
