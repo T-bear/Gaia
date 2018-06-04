@@ -6,6 +6,7 @@ import json
 
 app = Flask(__name__)
 
+#MongoDB client and db, change it to add data in your own db.
 client = MongoClient('localhost')
 db = client['pangaea']
 
