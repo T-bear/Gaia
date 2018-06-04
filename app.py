@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import  Flask, render_template, jsonify, redirect
 from pymongo import MongoClient
 from bson.json_util import dumps
